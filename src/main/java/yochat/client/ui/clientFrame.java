@@ -341,6 +341,12 @@ public class clientFrame extends javax.swing.JFrame {
                                 return;
                         }
 
+                        // Vérifier si l'utilisateur a entré autre chose pour le champ de texte
+                        if (tfUsername.getText().equals("Username")) {
+                                JOptionPane.showMessageDialog(null, "Please enter username");
+                                return;
+                        }
+
                         String username = tfUsername.getText();
                         String address = tfAddress.getText();
                         int port = Integer.parseInt(tfPort.getText());
