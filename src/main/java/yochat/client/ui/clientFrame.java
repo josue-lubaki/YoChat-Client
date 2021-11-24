@@ -5,8 +5,8 @@
  */
 package yochat.client.ui;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.FocusEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -43,106 +43,94 @@ public class clientFrame extends javax.swing.JFrame {
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
-                jDesktopPane = new javax.swing.JDesktopPane();
+                javax.swing.JDesktopPane jDesktopPane = new javax.swing.JDesktopPane();
                 tfUsername = new javax.swing.JTextField();
-                LblClient = new javax.swing.JLabel();
+                javax.swing.JLabel lblClient = new javax.swing.JLabel();
                 btnConnect = new javax.swing.JButton();
                 tfAddress = new javax.swing.JTextField();
                 btnDisconnect = new javax.swing.JButton();
                 tfPort = new javax.swing.JTextField();
                 btnClear = new javax.swing.JButton();
-                jScrollPane2 = new javax.swing.JScrollPane();
+                javax.swing.JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
                 txtMessage = new javax.swing.JTextArea();
                 btnSend = new javax.swing.JButton();
-                jScrollPane1 = new javax.swing.JScrollPane();
+                javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
                 txtChat = new javax.swing.JTextArea();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
                 jDesktopPane.setBackground(new java.awt.Color(101, 132, 148));
 
-                tfUsername.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+                tfUsername.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
                 tfUsername.setHorizontalAlignment(javax.swing.JTextField.LEFT);
                 tfUsername.setText("Username");
                 tfUsername.setToolTipText("Enter your username");
                 tfUsername.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
-                                tfUsername7FocusGained(evt);
+                                tfUsername7FocusGained();
                         }
                 });
                 // perte de focus
                 tfUsername.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusLost(java.awt.event.FocusEvent evt) {
-                                tfUsernameFocusLost(evt);
+                                tfUsernameFocusLost();
                         }
                 });
 
-                LblClient.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-                LblClient.setForeground(new java.awt.Color(255, 255, 255));
-                LblClient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                LblClient.setText("CLIENT");
-                LblClient.setToolTipText("");
-                LblClient.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-                LblClient.setInheritsPopupMenu(false);
+                lblClient.setFont(new java.awt.Font("Dialog", Font.BOLD, 18)); // NOI18N
+                lblClient.setForeground(new java.awt.Color(255, 255, 255));
+                lblClient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lblClient.setText("CLIENT");
+                lblClient.setToolTipText("");
+                lblClient.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+                lblClient.setInheritsPopupMenu(false);
 
                 btnConnect.setBackground(new java.awt.Color(0, 102, 51));
-                btnConnect.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+                btnConnect.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
                 btnConnect.setText("Connect");
                 btnConnect.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-                btnConnect.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnConnectActionPerformed(evt);
-                        }
-                });
+                btnConnect.addActionListener(this::btnConnectActionPerformed);
 
-                tfAddress.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                tfAddress.setFont(new java.awt.Font("Tahoma", Font.BOLD, 11)); // NOI18N
                 tfAddress.setText("localhost");
                 tfAddress.setToolTipText("Entrer localhost ou IP Addresse");
                 tfAddress.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
-                                tfAddress7FocusGained(evt);
+                                tfAddress7FocusGained();
                         }
                 });
                 // perte de focus
                 tfAddress.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusLost(java.awt.event.FocusEvent evt) {
-                                tfAddressFocusLost(evt);
+                                tfAddressFocusLost();
                         }
                 });
 
-                btnDisconnect.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+                btnDisconnect.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
                 btnDisconnect.setText("Disconnect");
-                btnDisconnect.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnDisconnectActionPerformed(evt);
-                        }
-                });
+                btnDisconnect.addActionListener(this::btnDisconnectActionPerformed);
 
-                tfPort.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+                tfPort.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
                 tfPort.setText("5000");
                 tfPort.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
-                                tfPortFocusGained(evt);
+                                tfPortFocusGained();
                         }
                 });
 
                 // perte de focus
                 tfPort.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusLost(java.awt.event.FocusEvent evt) {
-                                tfPortFocusLost(evt);
+                                tfPortFocusLost();
                         }
                 });
 
-                btnClear.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+                btnClear.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
                 btnClear.setText("Clear");
-                btnClear.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnClearActionPerformed(evt);
-                        }
-                });
+                btnClear.addActionListener(this::btnClearActionPerformed);
 
                 jDesktopPane.setLayer(tfUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
-                jDesktopPane.setLayer(LblClient, javax.swing.JLayeredPane.DEFAULT_LAYER);
+                jDesktopPane.setLayer(lblClient, javax.swing.JLayeredPane.DEFAULT_LAYER);
                 jDesktopPane.setLayer(btnConnect, javax.swing.JLayeredPane.DEFAULT_LAYER);
                 jDesktopPane.setLayer(tfAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
                 jDesktopPane.setLayer(btnDisconnect, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -193,13 +181,13 @@ public class clientFrame extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane8Layout
                                                 .createSequentialGroup()
                                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(LblClient, javax.swing.GroupLayout.PREFERRED_SIZE, 103,
+                                                .addComponent(lblClient, javax.swing.GroupLayout.PREFERRED_SIZE, 103,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(206, 206, 206)));
                 jDesktopPane8Layout.setVerticalGroup(jDesktopPane8Layout
                                 .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jDesktopPane8Layout.createSequentialGroup()
-                                                .addComponent(LblClient, javax.swing.GroupLayout.PREFERRED_SIZE, 44,
+                                                .addComponent(lblClient, javax.swing.GroupLayout.PREFERRED_SIZE, 44,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                                                                 javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -239,18 +227,14 @@ public class clientFrame extends javax.swing.JFrame {
                 jScrollPane2.setViewportView(txtMessage);
 
                 btnSend.setBackground(new java.awt.Color(0, 102, 51));
-                btnSend.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+                btnSend.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
                 btnSend.setText("Send");
-                btnSend.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnSendActionPerformed(evt);
-                        }
-                });
+                btnSend.addActionListener(this::btnSendActionPerformed);
 
                 txtChat.setEditable(false);
                 txtChat.setBackground(new java.awt.Color(102, 102, 102));
                 txtChat.setColumns(20);
-                txtChat.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+                txtChat.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
                 txtChat.setForeground(new java.awt.Color(255, 255, 255));
                 txtChat.setRows(5);
                 txtChat.setMargin(new java.awt.Insets(5, 5, 5, 5));
@@ -358,7 +342,7 @@ public class clientFrame extends javax.swing.JFrame {
                         }
 
                         String username = tfUsername.getText();
-                        String address = tfAddress.getText().toString();
+                        String address = tfAddress.getText();
                         int port = Integer.parseInt(tfPort.getText());
                         User client = new User(username);
 
@@ -370,7 +354,7 @@ public class clientFrame extends javax.swing.JFrame {
                         bufferedReader = new BufferedReader(isr);
 
                         Paquet paquet = new Paquet(client, "connecte-moi", Command.CONNECT);
-                        printWriterClient.println(paquet.toString());
+                        printWriterClient.println(paquet);
                         printWriterClient.flush();
                         isConnected = true;
 
@@ -383,47 +367,43 @@ public class clientFrame extends javax.swing.JFrame {
                 }
         }
 
-        protected void tfUsernameFocusLost(FocusEvent evt) {
+        protected void tfUsernameFocusLost() {
                 String str = tfUsername.getText().length() <= 0 ? "Username" : tfUsername.getText();
                 tfUsername.setText(str);
         }
 
-        protected void tfPortFocusLost(FocusEvent evt) {
+        protected void tfPortFocusLost() {
                 String str = tfPort.getText().length() <= 0 ? "5000" : tfPort.getText();
                 tfPort.setText(str);
         }
 
-        protected void tfAddressFocusLost(FocusEvent evt) {
+        protected void tfAddressFocusLost() {
                 String str = tfAddress.getText().length() <= 0 ? "localhost" : tfAddress.getText();
                 tfAddress.setText(str);
         }
 
-        private void tfUsername7FocusGained(FocusEvent evt) {// GEN-FIRST:event_tfUsername7FocusGained
+        private void tfUsername7FocusGained() {// GEN-FIRST:event_tfUsername7FocusGained
                 String str = tfUsername.getText().equals("Username") ? "" : tfUsername.getText();
                 tfUsername.setText(str);
         }// GEN-LAST:event_tfUsername7FocusGained
 
-        private void tfAddress7FocusGained(FocusEvent evt) {// GEN-FIRST:event_tfAddress7FocusGained
+        private void tfAddress7FocusGained() {// GEN-FIRST:event_tfAddress7FocusGained
                 String str = tfAddress.getText().equals("localhost") ? "" : tfAddress.getText();
                 tfAddress.setText(str);
         }// GEN-LAST:event_tfAddress7FocusGained
 
-        private void tfPortFocusGained(FocusEvent evt) {
+        private void tfPortFocusGained() {
                 String str = tfPort.getText().equals("5000") ? "" : tfPort.getText();
                 tfPort.setText(str);
         }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         public static javax.swing.JButton btnSend;
-        private javax.swing.JLabel LblClient;
         public static javax.swing.JTextArea txtChat;
         public static javax.swing.JTextArea txtMessage;
         public static javax.swing.JButton btnClear;
         public static javax.swing.JButton btnConnect;
         public static javax.swing.JButton btnDisconnect;
-        private javax.swing.JDesktopPane jDesktopPane;
-        private javax.swing.JScrollPane jScrollPane1;
-        private javax.swing.JScrollPane jScrollPane2;
         public static javax.swing.JTextField tfAddress;
         public static javax.swing.JTextField tfPort;
         public static javax.swing.JTextField tfUsername;

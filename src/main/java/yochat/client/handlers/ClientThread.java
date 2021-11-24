@@ -9,7 +9,7 @@ import static yochat.client.ui.clientFrame.*;
 
 public class ClientThread implements Runnable {
 
-    private BufferedReader reader;
+    private final BufferedReader reader;
 
     // constructor
     public ClientThread(BufferedReader reader) {
@@ -18,7 +18,7 @@ public class ClientThread implements Runnable {
 
     @Override
     public void run() {
-        String data[];
+        String[] data;
         String stream;
 
         try {
@@ -62,6 +62,8 @@ public class ClientThread implements Runnable {
                     txtChat.append(username + ": " + message + "\n");
                     txtChat.setCaretPosition(txtChat.getDocument().getLength());
                 }
+
+                //TODO : Si lea commande égale à LIST
 
             }
         } catch (Exception e) {
