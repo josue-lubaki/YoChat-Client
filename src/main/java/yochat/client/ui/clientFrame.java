@@ -27,9 +27,10 @@ import yochat.client.models.User;
  */
 public class clientFrame extends javax.swing.JFrame {
 
-        private Boolean isConnected = false;
+        public static Boolean isConnected = false;
         private Socket socketClient;
         private PrintWriter printWriterClient;
+        public static BufferedReader bufferedReader;
 
         /**
          * Creates new form clientFrame
@@ -140,6 +141,11 @@ public class clientFrame extends javax.swing.JFrame {
 
                 btnClear.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
                 btnClear.setText("Clear");
+                btnClear.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnClearActionPerformed(evt);
+                        }
+                });
 
                 jDesktopPane.setLayer(tfUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
                 jDesktopPane.setLayer(LblClient, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -300,6 +306,14 @@ public class clientFrame extends javax.swing.JFrame {
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
+        /**
+         * Methode qui permet de supprimer le message dans le textarea
+         */
+        protected void btnClearActionPerformed(ActionEvent evt) {
+                txtChat.removeAll();
+                txtChat.setText("");
+        }
+
         protected void btnSendActionPerformed(ActionEvent evt) {
                 try {
                         String message = txtMessage.getText();
@@ -324,19 +338,17 @@ public class clientFrame extends javax.swing.JFrame {
 
                 // fermer le socket du client
                 try {
+                        // Envoyer message au serveur pour le signaler la deconnexion
+                        String msg = tfUsername.getText() + ":deconnecte-moi:" + Command.DISCONNECT;
+                        printWriterClient.println(msg);
+                        printWriterClient.flush();
+
+                        // Fermer le socket
                         socketClient.close();
                         // Informer à l'utilisateur qu'il vient d'être déconnecté
                         txtChat.append("You are disconnected from the server.\n");
                         isConnected = false;
-                        tfAddress.setEditable(true);
-                        tfPort.setEditable(true);
-                        tfUsername.setEditable(true);
-                        btnConnect.setEnabled(true);
-                        btnDisconnect.setEnabled(false);
-                        btnSend.setEnabled(false);
-                        btnClear.setEnabled(false);
-                        txtMessage.setEditable(false);
-                        tfUsername.requestFocus();
+
                 } catch (IOException ex) {
                         txtChat.append("Error while disconnecting from the server.\n");
                 }
@@ -345,6 +357,12 @@ public class clientFrame extends javax.swing.JFrame {
 
         protected void btnConnectActionPerformed(ActionEvent evt) {
                 try {
+                        // Vérifier si l'utilisateur est déjà connecté
+                        if (isConnected) {
+                                JOptionPane.showMessageDialog(null, "You are already connected to the server.");
+                                return;
+                        }
+
                         String username = tfUsername.getText();
                         String address = tfAddress.getText().toString();
                         int port = Integer.parseInt(tfPort.getText());
@@ -355,24 +373,15 @@ public class clientFrame extends javax.swing.JFrame {
                         socketClient = new Socket(inet, port);
                         InputStreamReader isr = new InputStreamReader(socketClient.getInputStream());
                         printWriterClient = new PrintWriter(socketClient.getOutputStream());
-                        BufferedReader br = new BufferedReader(isr);
+                        bufferedReader = new BufferedReader(isr);
 
                         Paquet paquet = new Paquet(new User(username), "connecte-moi", Command.CONNECT);
                         printWriterClient.println(paquet.toString());
                         printWriterClient.flush();
                         isConnected = true;
 
-                        btnConnect.setEnabled(false);
-                        btnDisconnect.setEnabled(true);
-                        tfUsername.setEnabled(false);
-                        tfAddress.setEnabled(false);
-                        tfPort.setEnabled(false);
-                        btnClear.setEnabled(true);
-                        btnSend.setEnabled(true);
-                        txtMessage.setEnabled(true);
-
                         // Rester en écoute
-                        Thread thread = new Thread(new ClientThread(br));
+                        Thread thread = new Thread(new ClientThread(bufferedReader));
                         thread.start();
 
                 } catch (Exception e) {
@@ -411,18 +420,18 @@ public class clientFrame extends javax.swing.JFrame {
         }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton btnSend;
+        public static javax.swing.JButton btnSend;
         private javax.swing.JLabel LblClient;
         public static javax.swing.JTextArea txtChat;
-        private javax.swing.JTextArea txtMessage;
-        private javax.swing.JButton btnClear;
-        private javax.swing.JButton btnConnect;
-        private javax.swing.JButton btnDisconnect;
+        public static javax.swing.JTextArea txtMessage;
+        public static javax.swing.JButton btnClear;
+        public static javax.swing.JButton btnConnect;
+        public static javax.swing.JButton btnDisconnect;
         private javax.swing.JDesktopPane jDesktopPane;
         private javax.swing.JScrollPane jScrollPane1;
         private javax.swing.JScrollPane jScrollPane2;
-        private javax.swing.JTextField tfAddress;
-        private javax.swing.JTextField tfPort;
-        private javax.swing.JTextField tfUsername;
+        public static javax.swing.JTextField tfAddress;
+        public static javax.swing.JTextField tfPort;
+        public static javax.swing.JTextField tfUsername;
         // End of variables declaration//GEN-END:variables
 }

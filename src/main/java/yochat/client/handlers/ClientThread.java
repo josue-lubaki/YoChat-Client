@@ -1,17 +1,17 @@
 package yochat.client.handlers;
 
-import java.io.BufferedReader;
-import java.io.PrintWriter;
+import static yochat.client.ui.clientFrame.txtChat;
 
-import yochat.client.Client;
+import java.io.BufferedReader;
+
 import yochat.client.models.Command;
-import yochat.client.models.User;
 import static yochat.client.ui.clientFrame.*;
 
 public class ClientThread implements Runnable {
 
-    BufferedReader reader;
+    private BufferedReader reader;
 
+    // constructor
     public ClientThread(BufferedReader reader) {
         this.reader = reader;
     }
@@ -30,15 +30,37 @@ public class ClientThread implements Runnable {
                 String message = data[1];
                 String command = data[2];
 
-                if (command == Command.CONNECT) {
-                    txtChat.removeAll();
+                if (command.equalsIgnoreCase(Command.CONNECT)) {
+                    txtChat.setText("");
                     txtChat.append(username + " vient de se connecter.\n");
-                } else if (command == Command.DISCONNECT) {
+                    txtChat.setCaretPosition(txtChat.getDocument().getLength());
+                    btnConnect.setEnabled(false);
+                    btnDisconnect.setEnabled(true);
+                    tfUsername.setEnabled(false);
+                    tfAddress.setEnabled(false);
+                    tfPort.setEnabled(false);
+                    btnClear.setEnabled(true);
+                    btnSend.setEnabled(true);
+                    txtMessage.setEnabled(true);
+                } else if (command.equalsIgnoreCase(Command.DISCONNECT)) {
                     txtChat.append(username + " vient de se déconnecter .\n");
-                } else if (command == Command.SERVER_ERROR) {
-                    txtChat.append("SERVEUR : " + message + "\n");
-                } else if (command == Command.CHAT) {
+                    txtChat.setCaretPosition(txtChat.getDocument().getLength());
+                    tfAddress.setEditable(true);
+                    tfPort.setEditable(true);
+                    tfUsername.setEditable(true);
+                    btnConnect.setEnabled(true);
+                    btnDisconnect.setEnabled(false);
+                    btnSend.setEnabled(false);
+                    btnClear.setEnabled(false);
+                    txtMessage.setEditable(false);
+                    tfUsername.requestFocus();
+                } else if (command.equalsIgnoreCase(Command.SERVER_ERROR)) {
+                    txtChat.append(username + message + "\n");
+                    txtChat.setCaretPosition(txtChat.getDocument().getLength());
+                    isConnected = false;
+                } else if (command.equalsIgnoreCase(Command.CHAT)) {
                     txtChat.append(username + ": " + message + "\n");
+                    txtChat.setCaretPosition(txtChat.getDocument().getLength());
                 }
 
             }
