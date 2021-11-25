@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 import yochat.client.handlers.ClientThread;
 import yochat.client.models.Paquet;
@@ -39,7 +39,7 @@ public class clientFrame extends javax.swing.JFrame {
         public static String userCurrentUsername;
         public static String userCurrentAddress;
         public static int userCurrentPort;
-        private String txtMessageDescription = "Écris ton message ici...";
+        private final String txtMessageDescription = "Écris ton message ici...";
 
         /**
          * Creates new form clientFrame
@@ -69,6 +69,7 @@ public class clientFrame extends javax.swing.JFrame {
                 // La fenetre doit accepter la norme UTF-8
                 setLocale(new java.util.Locale("fr", "FR"));
                 setTitle("YoChat");
+                setIconImage(new ImageIcon("src/main/resources/image/rating.png").getImage());
 
                 try {
                         System.setProperty("file.encoding", "UTF-8");
@@ -342,7 +343,6 @@ public class clientFrame extends javax.swing.JFrame {
                         if (message.isBlank()) {
                                 JOptionPane.showMessageDialog(null, "Veuillez entrer un message", "Erreur",
                                                 JOptionPane.ERROR_MESSAGE);
-                                return;
                         } else if (message.equals(Command.LIST)) {
                                 // configuer le paquet demandand la liste des users connectés au serveur
                                 paquetToSendServer.setCommand(Command.LIST);
