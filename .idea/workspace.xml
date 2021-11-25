@@ -10,7 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e94d12c-ee07-4ed1-a5be-1bfc5be21f0a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/rating.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/handlers/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yochat/client/handlers/ClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/ui/clientFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yochat/client/ui/clientFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,12 +50,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../YoChat-server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.27787307" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JAR Application.client.jar">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="yochat.client.Client" />
       <module name="client" />
@@ -64,8 +69,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="client.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.client.jar" />
         <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
@@ -82,6 +92,7 @@
       <workItem from="1637744793861" duration="566000" />
       <workItem from="1637745594941" duration="370000" />
       <workItem from="1637746216669" duration="594000" />
+      <workItem from="1637843059077" duration="517000" />
     </task>
     <servers />
   </component>

@@ -23,7 +23,7 @@ import yochat.client.utility.Command;
  */
 public class ClientThread implements Runnable {
 
-    private BufferedReader reader = null;
+    private final BufferedReader reader;
 
     // constructor
     public ClientThread(BufferedReader reader) {
