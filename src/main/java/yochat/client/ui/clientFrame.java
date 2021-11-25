@@ -7,6 +7,9 @@ package yochat.client.ui;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.FocusAdapter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,9 +20,9 @@ import java.net.Socket;
 import javax.swing.JOptionPane;
 
 import yochat.client.handlers.ClientThread;
-import yochat.client.models.Command;
 import yochat.client.models.Paquet;
 import yochat.client.models.User;
+import yochat.client.utility.Command;
 
 /**
  *
@@ -31,6 +34,12 @@ public class clientFrame extends javax.swing.JFrame {
         private Socket socketClient;
         private PrintWriter printWriterClient;
         public static BufferedReader bufferedReader;
+        public static Paquet paquetToSendServer;
+        public static User userCurrent;
+        public static String userCurrentUsername;
+        public static String userCurrentAddress;
+        public static int userCurrentPort;
+        private String txtMessageDescription = "Écris ton message ici...";
 
         /**
          * Creates new form clientFrame
@@ -57,6 +66,16 @@ public class clientFrame extends javax.swing.JFrame {
                 javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
                 txtChat = new javax.swing.JTextArea();
 
+                // La fenetre doit accepter la norme UTF-8
+                setLocale(new java.util.Locale("fr", "FR"));
+                setTitle("YoChat");
+
+                try {
+                        System.setProperty("file.encoding", "UTF-8");
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
                 jDesktopPane.setBackground(new java.awt.Color(101, 132, 148));
@@ -65,14 +84,15 @@ public class clientFrame extends javax.swing.JFrame {
                 tfUsername.setHorizontalAlignment(javax.swing.JTextField.LEFT);
                 tfUsername.setText("Username");
                 tfUsername.setToolTipText("Enter your username");
-                tfUsername.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusGained(java.awt.event.FocusEvent evt) {
-                                tfUsername7FocusGained();
+                tfUsername.setEditable(true);
+                tfUsername.addFocusListener(new FocusAdapter() {
+                        public void focusGained(FocusEvent evt) {
+                                tfUsernameFocusGained();
                         }
                 });
                 // perte de focus
-                tfUsername.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusLost(java.awt.event.FocusEvent evt) {
+                tfUsername.addFocusListener(new FocusAdapter() {
+                        public void focusLost(FocusEvent evt) {
                                 tfUsernameFocusLost();
                         }
                 });
@@ -90,44 +110,53 @@ public class clientFrame extends javax.swing.JFrame {
                 btnConnect.setText("Connect");
                 btnConnect.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
                 btnConnect.addActionListener(this::btnConnectActionPerformed);
+                btnConnect.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
                 tfAddress.setFont(new java.awt.Font("Tahoma", Font.BOLD, 11)); // NOI18N
                 tfAddress.setText("localhost");
-                tfAddress.setToolTipText("Entrer localhost ou IP Addresse");
-                tfAddress.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusGained(java.awt.event.FocusEvent evt) {
-                                tfAddress7FocusGained();
+                tfAddress.setEditable(true);
+                tfAddress.setToolTipText(
+                                "Entrer localhost ou l'adresse IP du serveur ou encore le site web\n Exemple : 132.209.38.12 ou www.uqtr.ca");
+                tfAddress.addFocusListener(new FocusAdapter() {
+                        public void focusGained(FocusEvent evt) {
+                                tfAddressFocusGained();
                         }
                 });
                 // perte de focus
-                tfAddress.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusLost(java.awt.event.FocusEvent evt) {
+                tfAddress.addFocusListener(new FocusAdapter() {
+                        public void focusLost(FocusEvent evt) {
                                 tfAddressFocusLost();
                         }
                 });
 
                 btnDisconnect.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
                 btnDisconnect.setText("Disconnect");
+                // colour rouge
+                btnDisconnect.setBackground(new java.awt.Color(180, 10, 10));
                 btnDisconnect.addActionListener(this::btnDisconnectActionPerformed);
+                btnDisconnect.setEnabled(false);
 
                 tfPort.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
                 tfPort.setText("5000");
-                tfPort.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusGained(java.awt.event.FocusEvent evt) {
+                tfPort.setEditable(true);
+                tfPort.addFocusListener(new FocusAdapter() {
+                        public void focusGained(FocusEvent evt) {
                                 tfPortFocusGained();
                         }
                 });
 
                 // perte de focus
-                tfPort.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusLost(java.awt.event.FocusEvent evt) {
+                tfPort.addFocusListener(new FocusAdapter() {
+                        public void focusLost(FocusEvent evt) {
                                 tfPortFocusLost();
                         }
                 });
 
                 btnClear.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
+                btnClear.setBackground(new java.awt.Color(168, 138, 109));
                 btnClear.setText("Clear");
                 btnClear.addActionListener(this::btnClearActionPerformed);
+                btnClear.setEnabled(false);
 
                 jDesktopPane.setLayer(tfUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
                 jDesktopPane.setLayer(lblClient, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -224,12 +253,26 @@ public class clientFrame extends javax.swing.JFrame {
 
                 txtMessage.setColumns(20);
                 txtMessage.setRows(5);
+                txtMessage.setText(txtMessageDescription);
+                txtMessage.setEditable(false);
                 jScrollPane2.setViewportView(txtMessage);
+                jScrollPane2.getViewport().getView().addFocusListener(new FocusListener() {
+                        @Override
+                        public void focusGained(FocusEvent e) {
+                                txtMessageFocusGained();
+                        }
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                                txtMessageFocusLost();
+                        }
+                });
 
                 btnSend.setBackground(new java.awt.Color(0, 102, 51));
                 btnSend.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
                 btnSend.setText("Send");
                 btnSend.addActionListener(this::btnSendActionPerformed);
+                btnSend.setEnabled(false);
 
                 txtChat.setEditable(false);
                 txtChat.setBackground(new java.awt.Color(102, 102, 102));
@@ -295,18 +338,21 @@ public class clientFrame extends javax.swing.JFrame {
         protected void btnSendActionPerformed(ActionEvent evt) {
                 try {
                         String message = txtMessage.getText();
-                        if (message.length() > 0) {
-                                String username = tfUsername.getText();
-                                if (username.length() > 0) {
-                                        String msg = username + ":" + message + ":" + Command.CHAT;
-                                        printWriterClient.println(msg);
-                                        printWriterClient.flush();
-                                        txtMessage.setText("");
-                                        txtMessage.requestFocus();
-                                } else {
-                                        JOptionPane.showMessageDialog(null, "Please enter username, address and port");
-                                }
+                        if (message.isBlank()) {
+                                JOptionPane.showMessageDialog(null, "Veuillez entrer un message", "Erreur",
+                                                JOptionPane.ERROR_MESSAGE);
+                                return;
                         }
+
+                        // Configurer le paquet à envoyer
+                        paquetToSendServer.setMessage(message);
+                        paquetToSendServer.setCommand(Command.CHAT);
+
+                        // Envoyer le paquet
+                        printWriterClient.println(paquetToSendServer);
+                        txtMessage.setText("");
+                        txtMessage.requestFocus();
+
                 } catch (Exception ex) {
                         ex.printStackTrace();
                 }
@@ -315,92 +361,198 @@ public class clientFrame extends javax.swing.JFrame {
         protected void btnDisconnectActionPerformed(ActionEvent evt) {
 
                 // fermer le socket du client
-                try {
-                        // Envoyer message au serveur pour le signaler la deconnexion
-                        String msg = tfUsername.getText() + ":deconnecte-moi:" + Command.DISCONNECT;
-                        printWriterClient.println(msg);
-                        printWriterClient.flush();
+                // try {
+                // Envoyer message au serveur pour le signaler la deconnexion
+                // Configurer le paquet à envoyer
+                paquetToSendServer.setMessage("déconnecte-moi");
+                paquetToSendServer.setCommand(Command.DISCONNECT);
+                printWriterClient.println(paquetToSendServer);
 
-                        // Fermer le socket
-                        socketClient.close();
-                        // Informer à l'utilisateur qu'il vient d'être déconnecté
-                        txtChat.append("You are disconnected from the server.\n");
-                        isConnected = false;
+                // Informer à l'utilisateur qu'il vient d'être déconnecté
+                isConnected = false;
 
-                } catch (IOException ex) {
-                        txtChat.append("Error while disconnecting from the server.\n");
-                }
+                // txtChat.append("Déconnexion réussi ! Bye " + userCurrentUsername + "\n");
+                updateComponentContextDisconnect();
+
+                // Fermer le socket
+                // Thread.sleep(1000);
+                // socketClient.close();
+                System.out.println("je suis sur btnDisconnectActionPerformed");
+
+                // } catch (IOException ex) {
+                // txtChat.append("Error while disconnecting from the server.\n");
+                // } catch (InterruptedException e) {
+                // e.printStackTrace();
+                // }
 
         }
 
         protected void btnConnectActionPerformed(ActionEvent evt) {
                 try {
-                        // Vérifier si l'utilisateur est déjà connecté
-                        if (isConnected) {
-                                JOptionPane.showMessageDialog(null, "You are already connected to the server.");
+                        // Vérification des champs
+                        if (!isPossibleToConnect())
                                 return;
-                        }
 
-                        // Vérifier si l'utilisateur a entré autre chose pour le champ de texte
-                        if (tfUsername.getText().equals("Username")) {
-                                JOptionPane.showMessageDialog(null, "Please enter username");
-                                return;
-                        }
+                        // Récupérer les informations de l'utilisateur
+                        bindInfoUser();
 
-                        String username = tfUsername.getText();
-                        String address = tfAddress.getText();
-                        int port = Integer.parseInt(tfPort.getText());
-                        User client = new User(username);
-
-                        InetAddress inet = InetAddress.getByName(address);
-
-                        socketClient = new Socket(inet, port);
-                        InputStreamReader isr = new InputStreamReader(socketClient.getInputStream());
-                        printWriterClient = new PrintWriter(socketClient.getOutputStream());
-                        bufferedReader = new BufferedReader(isr);
-
-                        Paquet paquet = new Paquet(client, "connecte-moi", Command.CONNECT);
-                        printWriterClient.println(paquet);
-                        printWriterClient.flush();
+                        // Créer le socket client
+                        socketClient = connectUserToSocket();
                         isConnected = true;
 
-                        // Rester en écoute
+                        // Créer le Thread pour rester en écoute sur le socket
                         Thread thread = new Thread(new ClientThread(bufferedReader));
                         thread.start();
 
+                        JOptionPane.showMessageDialog(null, "Bienvenue " + userCurrentUsername, "SUCCESS",
+                                        JOptionPane.INFORMATION_MESSAGE);
+
+                        updateComponentContextConnect();
+
                 } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+                        JOptionPane.showMessageDialog(null, "Connexion non établie avec le serveur", "Erreur",
+                                        JOptionPane.ERROR_MESSAGE);
                 }
         }
 
+        /**
+         * Methode qui permet de créer le socket client
+         * 
+         * @return socketClient
+         */
+        private Socket connectUserToSocket() throws IOException {
+                InetAddress inet = InetAddress.getByName(userCurrentAddress);
+                socketClient = new Socket(inet, userCurrentPort);
+                InputStreamReader isr = new InputStreamReader(socketClient.getInputStream());
+                printWriterClient = new PrintWriter(socketClient.getOutputStream(), true);
+                bufferedReader = new BufferedReader(isr);
+
+                paquetToSendServer = new Paquet(userCurrent, "connecte-moi", Command.CONNECT);
+                printWriterClient.println(paquetToSendServer);
+
+                return socketClient;
+        }
+
+        /**
+         * Methode qui permet de récupèrer (bind) les informations de l'utilisateur
+         */
+        private void bindInfoUser() {
+                userCurrent = new User(tfUsername.getText());
+                userCurrentUsername = userCurrent.getUsername();
+                userCurrentAddress = tfAddress.getText();
+                userCurrentPort = Integer.parseInt(tfPort.getText());
+        }
+
+        /**
+         * Methode qui permet de verifier si l'utilisateur peut se connecter
+         */
+        private boolean isPossibleToConnect() {
+                // Vérifier si l'utilisateur est déjà connecté
+                if (isConnected) {
+                        JOptionPane.showMessageDialog(null, "Vous êtes déjà connecté au serveur", "INFO",
+                                        JOptionPane.INFORMATION_MESSAGE);
+                        return false;
+                }
+
+                // Vérifier si l'utilisateur a entré son Username
+                if (tfUsername.getText().equals("Username") || tfUsername.getText().equals("")) {
+                        JOptionPane.showMessageDialog(null, "Entrer votre username", "Erreur",
+                                        JOptionPane.ERROR_MESSAGE);
+                        return false;
+                }
+
+                return true;
+        }
+
         protected void tfUsernameFocusLost() {
-                String str = tfUsername.getText().length() <= 0 ? "Username" : tfUsername.getText();
+                String str = tfUsername.getText().isBlank() ? "Username" : tfUsername.getText();
                 tfUsername.setText(str);
         }
 
         protected void tfPortFocusLost() {
-                String str = tfPort.getText().length() <= 0 ? "5000" : tfPort.getText();
+                String str = tfPort.getText().isBlank() ? "5000" : tfPort.getText();
                 tfPort.setText(str);
         }
 
         protected void tfAddressFocusLost() {
-                String str = tfAddress.getText().length() <= 0 ? "localhost" : tfAddress.getText();
+                String str = tfAddress.getText().isBlank() ? "localhost" : tfAddress.getText();
                 tfAddress.setText(str);
         }
 
-        private void tfUsername7FocusGained() {// GEN-FIRST:event_tfUsername7FocusGained
+        protected void tfUsernameFocusGained() {
                 String str = tfUsername.getText().equals("Username") ? "" : tfUsername.getText();
                 tfUsername.setText(str);
-        }// GEN-LAST:event_tfUsername7FocusGained
+        }
 
-        private void tfAddress7FocusGained() {// GEN-FIRST:event_tfAddress7FocusGained
+        protected void tfAddressFocusGained() {
                 String str = tfAddress.getText().equals("localhost") ? "" : tfAddress.getText();
                 tfAddress.setText(str);
-        }// GEN-LAST:event_tfAddress7FocusGained
+        }
 
-        private void tfPortFocusGained() {
+        protected void tfPortFocusGained() {
                 String str = tfPort.getText().equals("5000") ? "" : tfPort.getText();
                 tfPort.setText(str);
+        }
+
+        protected void txtMessageFocusGained() {
+                if (isConnected) {
+                        String str = txtMessage.getText().equals(txtMessageDescription) ? "" : txtMessage.getText();
+                        txtMessage.setText(str);
+                }
+
+        }
+
+        protected void txtMessageFocusLost() {
+                String str = txtMessage.getText().isBlank() ? txtMessageDescription : txtMessage.getText();
+                txtMessage.setText(str);
+        }
+
+        /**
+         * Methode qui permet d'écrire sur la console du client le message reçu du
+         * serveur
+         */
+        public static void updateDashBoard(String username, String message) {
+                txtChat.append(username + ": " + message + "\n");
+                txtChat.setCaretPosition(txtChat.getDocument().getLength());
+        }
+
+        /**
+         * Mettre à jour les composants de la fenêtre client dans le contexte de la
+         * connexion
+         */
+        public static void updateComponentContextConnect() {
+                btnConnect.setEnabled(false);
+                btnConnect.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                btnDisconnect.setEnabled(true);
+                btnDisconnect.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                btnClear.setEnabled(true);
+                btnClear.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                tfUsername.setEnabled(false);
+                tfAddress.setEnabled(false);
+                tfPort.setEnabled(false);
+                btnSend.setEnabled(true);
+                btnSend.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                txtMessage.setEditable(true);
+        }
+
+        /**
+         * Mettre à jour les composants de la fenêtre client dans le contexte de la
+         * déconnexion
+         */
+        public static void updateComponentContextDisconnect() {
+                btnDisconnect.setEnabled(false);
+                btnDisconnect.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                tfUsername.setEnabled(true);
+                tfAddress.setEnabled(true);
+                tfPort.setEnabled(true);
+                btnClear.setEnabled(false);
+                btnClear.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                btnSend.setEnabled(false);
+                btnSend.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                txtMessage.setEditable(false);
+                tfUsername.requestFocus();
+                btnConnect.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                btnConnect.setEnabled(true);
         }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
