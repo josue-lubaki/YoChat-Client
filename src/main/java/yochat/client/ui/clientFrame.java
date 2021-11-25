@@ -343,16 +343,24 @@ public class clientFrame extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(null, "Veuillez entrer un message", "Erreur",
                                                 JOptionPane.ERROR_MESSAGE);
                                 return;
+                        } else if (message.equals(Command.LIST)) {
+                                // configuer le paquet demandand la liste des users connectés au serveur
+                                paquetToSendServer.setCommand(Command.LIST);
+                                paquetToSendServer.setMessage(message);
+                                paquetToSendServer.setUser(userCurrent);
+
+                                // envoyer le paquet au serveur
+                                printWriterClient.println(paquetToSendServer.toString());
+                        } else {
+                                // Configurer le paquet à envoyer
+                                paquetToSendServer.setMessage(message);
+                                paquetToSendServer.setCommand(Command.CHAT);
+
+                                // Envoyer le paquet
+                                printWriterClient.println(paquetToSendServer);
+                                txtMessage.setText("");
+                                txtMessage.requestFocus();
                         }
-
-                        // Configurer le paquet à envoyer
-                        paquetToSendServer.setMessage(message);
-                        paquetToSendServer.setCommand(Command.CHAT);
-
-                        // Envoyer le paquet
-                        printWriterClient.println(paquetToSendServer);
-                        txtMessage.setText("");
-                        txtMessage.requestFocus();
 
                 } catch (Exception ex) {
                         ex.printStackTrace();

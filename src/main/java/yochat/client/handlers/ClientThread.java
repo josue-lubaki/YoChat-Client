@@ -1,8 +1,11 @@
 package yochat.client.handlers;
 
-import static yochat.client.ui.clientFrame.*;
+import static yochat.client.ui.clientFrame.isConnected;
+import static yochat.client.ui.clientFrame.txtChat;
+import static yochat.client.ui.clientFrame.updateComponentContextConnect;
+import static yochat.client.ui.clientFrame.updateComponentContextDisconnect;
+import static yochat.client.ui.clientFrame.updateDashBoard;
 
-import java.awt.Cursor;
 import java.io.BufferedReader;
 
 import javax.swing.JOptionPane;
@@ -69,7 +72,16 @@ public class ClientThread implements Runnable {
                     return;
 
                 case Command.LIST:
-                    // TODO : Si lea commande égale à LIST
+                    // split the list of users
+                    String[] partMessage = message.split(":");
+                    // split partMessage
+                    String[] users = partMessage[1].trim().split(" ");
+
+                    txtChat.append(username + " : " + partMessage[0] + "\n");
+                    for (String user : users) {
+                        txtChat.append("     " + user + "\n");
+                    }
+
                     break;
 
                 default:
