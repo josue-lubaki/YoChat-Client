@@ -395,7 +395,14 @@ public class clientFrame extends javax.swing.JFrame {
                                 return;
 
                         // Récupérer les informations de l'utilisateur
-                        bindInfoUser();
+                        try {
+                                bindInfoUser();
+                        } catch (NumberFormatException e) {
+                                JOptionPane.showMessageDialog(null, "Veuillez entrer un numéro de port valide",
+                                                "Erreur", JOptionPane.ERROR_MESSAGE);
+                                e.printStackTrace();
+                                return;
+                        }
 
                         // Créer le socket client
                         socketClient = connectUserToSocket();
@@ -408,8 +415,9 @@ public class clientFrame extends javax.swing.JFrame {
                         updateComponentContextConnect();
 
                 } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Connexion non établie avec le serveur", "Erreur",
-                                        JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null,
+                                        "Connexion non établie avec le serveur \"" + userCurrentAddress + "\"",
+                                        "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
         }
 
@@ -435,10 +443,10 @@ public class clientFrame extends javax.swing.JFrame {
          * Methode qui permet de récupèrer (bind) les informations de l'utilisateur
          */
         private void bindInfoUser() {
-                userCurrent = new User(tfUsername.getText());
+                userCurrent = new User(tfUsername.getText().trim());
                 userCurrentUsername = userCurrent.getUsername();
-                userCurrentAddress = tfAddress.getText();
-                userCurrentPort = Integer.parseInt(tfPort.getText());
+                userCurrentAddress = tfAddress.getText().trim();
+                userCurrentPort = Integer.parseInt(tfPort.getText().trim());
         }
 
         /**
