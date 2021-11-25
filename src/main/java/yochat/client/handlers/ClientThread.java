@@ -1,15 +1,26 @@
 package yochat.client.handlers;
 
 import static yochat.client.ui.clientFrame.txtChat;
-
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
 
-import yochat.client.models.Command;
+import yochat.client.models.Paquet;
+import yochat.client.models.User;
+import yochat.client.utility.Command;
 import static yochat.client.ui.clientFrame.*;
 
+/**
+ * Classe qui gère les communications avec le serveur, particulièrement écouter
+ * ce dont le serveur envoie.
+ * 
+ * @author Josue Lubaki & Ismael Coulibaly
+ * @version 1.0
+ */
 public class ClientThread implements Runnable {
 
-    private final BufferedReader reader;
+    private BufferedReader reader = null;
 
     // constructor
     public ClientThread(BufferedReader reader) {
@@ -20,56 +31,53 @@ public class ClientThread implements Runnable {
     public void run() {
         String[] data;
         String stream;
+        String myUsername = "";
 
         try {
             while ((stream = reader.readLine()) != null) {
-                data = stream.split(":");
+                data = stream.split("%%");
                 System.out.println("stream lu : " + stream);
 
-                String username = data[0];
-                String message = data[1];
-                String command = data[2];
+                Paquet paquet = new Paquet(new User(data[0]), data[1], data[2]);
+                String username = paquet.getUser().getUsername(), message = paquet.getMessage(),
+                        command = paquet.getCommand();
 
-                if (command.equalsIgnoreCase(Command.CONNECT)) {
+                switch (command) {
+                case Command.CONNECT:
                     txtChat.setText("");
-                    txtChat.append(username + " vient de se connecter.\n");
-                    txtChat.setCaretPosition(txtChat.getDocument().getLength());
-                    btnConnect.setEnabled(false);
-                    btnDisconnect.setEnabled(true);
-                    tfUsername.setEnabled(false);
-                    tfAddress.setEnabled(false);
-                    tfPort.setEnabled(false);
-                    btnClear.setEnabled(true);
-                    btnSend.setEnabled(true);
-                    txtMessage.setEnabled(true);
-                } else if (command.equalsIgnoreCase(Command.DISCONNECT)) {
-                    txtChat.append(username + " vient de se déconnecter .\n");
-                    txtChat.setCaretPosition(txtChat.getDocument().getLength());
-                    tfAddress.setEditable(true);
-                    tfPort.setEditable(true);
-                    tfUsername.setEditable(true);
-                    btnConnect.setEnabled(true);
-                    btnDisconnect.setEnabled(false);
-                    btnSend.setEnabled(false);
-                    btnClear.setEnabled(false);
-                    txtMessage.setEditable(false);
-                    tfUsername.requestFocus();
-                } else if (command.equalsIgnoreCase(Command.SERVER_ERROR)) {
+                    myUsername = message.split(" ")[0];
+                    updateDashBoard("SERVEUR", "Tu es désormais connecter.");
+                    updateComponentContextConnect();
+
+                    break;
+
+                case Command.DISCONNECT:
+                    updateDashBoard(username, "Je suis à présent déconnecter.");
+                    updateComponentContextDisconnect();
+                    break;
+
+                case Command.CHAT:
+                    username = username.equals(myUsername) ? "Moi" : username;
+                    updateDashBoard(username, message);
+                    break;
+
+                case Command.SERVER_ERROR:
                     txtChat.append(username + message + "\n");
                     txtChat.setCaretPosition(txtChat.getDocument().getLength());
                     isConnected = false;
-                } else if (command.equalsIgnoreCase(Command.CHAT)) {
-                    txtChat.append(username + ": " + message + "\n");
-                    txtChat.setCaretPosition(txtChat.getDocument().getLength());
+                    break;
+
+                case Command.LIST:
+                    // TODO : Si lea commande égale à LIST
+                    break;
+
+                default:
+                    break;
                 }
-
-                //TODO : Si lea commande égale à LIST
-
             }
         } catch (Exception e) {
+            // updateDashBoard("Console", e.getMessage());
             e.printStackTrace();
         }
-
     }
-
 }
