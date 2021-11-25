@@ -1,15 +1,15 @@
 package yochat.client.handlers;
 
-import static yochat.client.ui.clientFrame.txtChat;
+import static yochat.client.ui.clientFrame.*;
+
+import java.awt.Cursor;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.Socket;
+
+import javax.swing.JOptionPane;
 
 import yochat.client.models.Paquet;
 import yochat.client.models.User;
 import yochat.client.utility.Command;
-import static yochat.client.ui.clientFrame.*;
 
 /**
  * Classe qui gère les communications avec le serveur, particulièrement écouter
@@ -46,13 +46,14 @@ public class ClientThread implements Runnable {
                 case Command.CONNECT:
                     txtChat.setText("");
                     myUsername = message.split(" ")[0];
-                    updateDashBoard("SERVEUR", "Tu es désormais connecter.");
+                    updateDashBoard("SERVEUR", "Tu es à présent connecter.");
                     updateComponentContextConnect();
-
+                    JOptionPane.showMessageDialog(null, "Bienvenue " + myUsername, "SUCCESS",
+                            JOptionPane.INFORMATION_MESSAGE);
                     break;
 
                 case Command.DISCONNECT:
-                    updateDashBoard(username, "Je suis à présent déconnecter.");
+                    updateDashBoard("SERVEUR", "Tu es à présent déconnecter.");
                     updateComponentContextDisconnect();
                     break;
 
@@ -62,10 +63,10 @@ public class ClientThread implements Runnable {
                     break;
 
                 case Command.SERVER_ERROR:
-                    txtChat.append(username + message + "\n");
-                    txtChat.setCaretPosition(txtChat.getDocument().getLength());
+                    updateDashBoard(username, message);
                     isConnected = false;
-                    break;
+                    updateComponentContextDisconnect();
+                    return;
 
                 case Command.LIST:
                     // TODO : Si lea commande égale à LIST

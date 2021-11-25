@@ -254,7 +254,7 @@ public class clientFrame extends javax.swing.JFrame {
                 txtMessage.setColumns(20);
                 txtMessage.setRows(5);
                 txtMessage.setText(txtMessageDescription);
-                txtMessage.setEditable(false);
+                txtMessage.setEnabled(false);
                 jScrollPane2.setViewportView(txtMessage);
                 jScrollPane2.getViewport().getView().addFocusListener(new FocusListener() {
                         @Override
@@ -325,6 +325,7 @@ public class clientFrame extends javax.swing.JFrame {
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addContainerGap()));
                 pack();
+                setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
 
         /**
@@ -361,29 +362,29 @@ public class clientFrame extends javax.swing.JFrame {
         protected void btnDisconnectActionPerformed(ActionEvent evt) {
 
                 // fermer le socket du client
-                // try {
-                // Envoyer message au serveur pour le signaler la deconnexion
-                // Configurer le paquet à envoyer
-                paquetToSendServer.setMessage("déconnecte-moi");
-                paquetToSendServer.setCommand(Command.DISCONNECT);
-                printWriterClient.println(paquetToSendServer);
+                try {
+                        // Envoyer message au serveur pour le signaler la deconnexion
+                        // Configurer le paquet à envoyer
+                        paquetToSendServer.setMessage("déconnecte-moi");
+                        paquetToSendServer.setCommand(Command.DISCONNECT);
+                        printWriterClient.println(paquetToSendServer);
 
-                // Informer à l'utilisateur qu'il vient d'être déconnecté
-                isConnected = false;
+                        // Informer à l'utilisateur qu'il vient d'être déconnecté
+                        isConnected = false;
 
-                // txtChat.append("Déconnexion réussi ! Bye " + userCurrentUsername + "\n");
-                updateComponentContextDisconnect();
+                        // txtChat.append("Déconnexion réussi ! Bye " + userCurrentUsername + "\n");
+                        updateComponentContextDisconnect();
 
-                // Fermer le socket
-                // Thread.sleep(1000);
-                // socketClient.close();
-                System.out.println("je suis sur btnDisconnectActionPerformed");
+                        // Fermer le socket
+                        Thread.sleep(1000);
+                        socketClient.close();
+                } catch (
 
-                // } catch (IOException ex) {
-                // txtChat.append("Error while disconnecting from the server.\n");
-                // } catch (InterruptedException e) {
-                // e.printStackTrace();
-                // }
+                IOException ex) {
+                        txtChat.append("Error while disconnecting from the server.\n");
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
 
         }
 
@@ -403,9 +404,6 @@ public class clientFrame extends javax.swing.JFrame {
                         // Créer le Thread pour rester en écoute sur le socket
                         Thread thread = new Thread(new ClientThread(bufferedReader));
                         thread.start();
-
-                        JOptionPane.showMessageDialog(null, "Bienvenue " + userCurrentUsername, "SUCCESS",
-                                        JOptionPane.INFORMATION_MESSAGE);
 
                         updateComponentContextConnect();
 
@@ -532,7 +530,7 @@ public class clientFrame extends javax.swing.JFrame {
                 tfPort.setEnabled(false);
                 btnSend.setEnabled(true);
                 btnSend.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                txtMessage.setEditable(true);
+                txtMessage.setEnabled(true);
         }
 
         /**
@@ -545,14 +543,13 @@ public class clientFrame extends javax.swing.JFrame {
                 tfUsername.setEnabled(true);
                 tfAddress.setEnabled(true);
                 tfPort.setEnabled(true);
-                btnClear.setEnabled(false);
                 btnClear.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 btnSend.setEnabled(false);
                 btnSend.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                txtMessage.setEditable(false);
                 tfUsername.requestFocus();
                 btnConnect.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 btnConnect.setEnabled(true);
+                txtMessage.setEnabled(false);
         }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
