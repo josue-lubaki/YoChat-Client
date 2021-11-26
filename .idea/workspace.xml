@@ -10,36 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31fbc1db-f286-4188-8cb1-bcfdd3f9cabe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Client.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Client.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/README.TXT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manifest.mf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/client_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/client_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/images/client.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.apt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/handlers/ClientThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/models/Paquet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/models/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/ui/clientFrame.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/ui/clientFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/utility/Command.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/rating.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/ui/clientFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/clientFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,8 +73,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
         <item itemvalue="JAR Application.Client.jar" />
+        <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -110,7 +88,7 @@
       <updated>1637949313674</updated>
       <workItem from="1637949315211" duration="227000" />
       <workItem from="1637949603375" duration="1162000" />
-      <workItem from="1637950868962" duration="253000" />
+      <workItem from="1637950868962" duration="1644000" />
     </task>
     <servers />
   </component>

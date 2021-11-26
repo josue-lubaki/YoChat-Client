@@ -66,6 +66,10 @@ public class clientFrame extends javax.swing.JFrame {
         JScrollPane jScrollPane = new JScrollPane();
         txtChat = new javax.swing.JTextArea();
 
+        setTitle("YoChat");
+        // Ajout Image icon
+        setIconImage(new javax.swing.ImageIcon("src/resources/images/client.png").getImage());
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jDesktopPane.setBackground(new java.awt.Color(101, 132, 148));
