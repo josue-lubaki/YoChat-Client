@@ -16,13 +16,13 @@
 <img src="https://github.com/josue-lubaki/YoChat-Client/blob/main/screen/message.png" width="380" height="460" alt="message"/>
 
 ### Demo - communication between 2 clients
-[![Everything Is AWESOME](https://i.imgur.com/RxQuwSm.png)](https://www.youtube.com/watch?v=5ET7nb-xI30 "two-way communication")
+[![Everything Is AWESOME](https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/564097e7-e50e-468e-8c3a-1fa4bbbf65b3.gif?ClientID=vimeo-core-prod&Date=1637989855&Signature=851579ba336f45828fc62fb6afeec1e151a9191a)](https://www.youtube.com/watch?v=5ET7nb-xI30 "two-way communication")
 
 ### Demo - communication between 3 clients
-[![Everything Is AWESOME](https://imgur.com/97a6NNM.png)](https://www.youtube.com/watch?v=4ep7IsEVqes "communication between 3 clients")
+[![Everything Is AWESOME](https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/d680ecce-87dc-4eba-938d-f514ea6c55c9.gif?ClientID=vimeo-core-prod&Date=1637990210&Signature=d2d6ad5b4032f4e0e3135a613715b85f99f91e16)](https://www.youtube.com/watch?v=4ep7IsEVqes "communication between 3 clients")
 
 ### Demo - communication between 4 clients
 
-[![Everything Is AWESOME](https://imgur.com/qdB1iI8.png)](https://www.youtube.com/watch?v=cVZ_NVmAIsU "communication between 4 clients")
+[![Everything Is AWESOME](https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/5da45a09-c968-4111-8154-6bd9cbbdcc40.gif?ClientID=vimeo-core-prod&Date=1637990373&Signature=74bb32d7bfcf382cd345eb38a81524c78b008ed5)](https://www.youtube.com/watch?v=cVZ_NVmAIsU "communication between 4 clients")
 
 ### Thank you for watching 
