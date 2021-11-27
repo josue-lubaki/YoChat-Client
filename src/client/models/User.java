@@ -1,5 +1,7 @@
 package client.models;
 
+import static client.utility.utils.capitalize;
+
 public class User {
     private final String username;
 
@@ -8,6 +10,6 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return capitalize(username);
     }
 }

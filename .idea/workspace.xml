@@ -10,13 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31fbc1db-f286-4188-8cb1-bcfdd3f9cabe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/resources/images/client.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/ui/clientFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/handlers/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/handlers/ClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/ui/clientFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ui/clientFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +46,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.27787307" />
   </component>
@@ -88,7 +85,9 @@
       <updated>1637949313674</updated>
       <workItem from="1637949315211" duration="227000" />
       <workItem from="1637949603375" duration="1162000" />
-      <workItem from="1637950868962" duration="1644000" />
+      <workItem from="1637950868962" duration="2138000" />
+      <workItem from="1637971814887" duration="44000" />
+      <workItem from="1637976308943" duration="205000" />
     </task>
     <servers />
   </component>

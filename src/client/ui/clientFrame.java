@@ -23,6 +23,8 @@ import client.models.Paquet;
 import client.models.User;
 import client.utility.Command;
 
+import static client.utility.utils.capitalize;
+
 /**
  *
  * @author coulibai
@@ -377,8 +379,9 @@ public class clientFrame extends javax.swing.JFrame {
          * Methode qui permet de récupèrer (bind) les informations de l'utilisateur
          */
         private void bindInfoUser() {
-                userCurrent = new User(tfUsername.getText().trim());
-                userCurrentUsername = userCurrent.getUsername();
+                userCurrentUsername = capitalize(tfUsername.getText().trim());
+                userCurrent = new User(userCurrentUsername);
+
                 userCurrentAddress = tfAddress.getText().trim();
                 userCurrentPort = Integer.parseInt(tfPort.getText().trim());
         }
