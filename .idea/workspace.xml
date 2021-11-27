@@ -2,20 +2,15 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="client:jar" />
+      <artifact name="Client:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e94d12c-ee07-4ed1-a5be-1bfc5be21f0a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/rating.png" afterDir="false" />
+    <list default="true" id="31fbc1db-f286-4188-8cb1-bcfdd3f9cabe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/handlers/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yochat/client/handlers/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/yochat/client/ui/clientFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yochat/client/ui/clientFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,14 +23,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="21MHiXShhQArhedtR1W79Xv6hBE" />
+  <component name="ProjectId" id="21SzXBNQzMdkwqVdYfIu9APb0SP" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -47,21 +35,24 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.27787307" />
   </component>
-  <component name="RunManager" selected="JAR Application.client.jar">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="yochat.client.Client" />
-      <module name="client" />
+      <option name="MAIN_CLASS_NAME" value="client.Client" />
+      <module name="Client" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="yochat.client.*" />
+          <option name="PATTERN" value="client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -69,30 +60,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="client.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" />
+    <configuration name="Client.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Client_jar/Client.jar" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JAR Application.client.jar" />
         <item itemvalue="Application.Client" />
+        <item itemvalue="JAR Application.Client.jar" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1e94d12c-ee07-4ed1-a5be-1bfc5be21f0a" name="Changes" comment="" />
-      <created>1637744164598</created>
+      <changelist id="31fbc1db-f286-4188-8cb1-bcfdd3f9cabe" name="Changes" comment="" />
+      <created>1637949313674</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1637744164598</updated>
-      <workItem from="1637744166853" duration="481000" />
-      <workItem from="1637744793861" duration="566000" />
-      <workItem from="1637745594941" duration="370000" />
-      <workItem from="1637746216669" duration="594000" />
-      <workItem from="1637843059077" duration="517000" />
+      <updated>1637949313674</updated>
+      <workItem from="1637949315211" duration="227000" />
+      <workItem from="1637949603375" duration="1162000" />
+      <workItem from="1637950868962" duration="2138000" />
+      <workItem from="1637971814887" duration="44000" />
+      <workItem from="1637976308943" duration="205000" />
+      <workItem from="1637980128412" duration="3561000" />
     </task>
     <servers />
   </component>
