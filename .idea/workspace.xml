@@ -10,13 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31fbc1db-f286-4188-8cb1-bcfdd3f9cabe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screen/jar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screen/message.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screen/videoClient.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screen/videoClient2.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screen/videoClient3.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screen/welcome.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +84,7 @@
       <workItem from="1637950868962" duration="2138000" />
       <workItem from="1637971814887" duration="44000" />
       <workItem from="1637976308943" duration="205000" />
-      <workItem from="1637980128412" duration="1938000" />
+      <workItem from="1637980128412" duration="3561000" />
     </task>
     <servers />
   </component>
