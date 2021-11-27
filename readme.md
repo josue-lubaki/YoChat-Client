@@ -12,8 +12,8 @@
 - ```port```: This corresponds to the port on which you would listen to the server, by default our server uses port ```5000```
 
 ## Screenshots
-<img src="https://github.com/josue-lubaki/YoChat-Client/blob/main/screen/welcome.png" width="460" height="460" alt="welcome"/>______
-<img src="https://github.com/josue-lubaki/YoChat-Client/blob/main/screen/message.png" width="460" height="460" alt="message"/>
+<img src="https://github.com/josue-lubaki/YoChat-Client/blob/main/screen/welcome.png" width="380" height="460" alt="welcome"/>______
+<img src="https://github.com/josue-lubaki/YoChat-Client/blob/main/screen/message.png" width="380" height="460" alt="message"/>
 
 ### Demo - communication between 2 clients
 [![Everything Is AWESOME](https://i.imgur.com/RxQuwSm.png)](https://www.youtube.com/watch?v=5ET7nb-xI30 "two-way communication")
