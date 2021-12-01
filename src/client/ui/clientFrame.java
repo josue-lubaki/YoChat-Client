@@ -22,7 +22,10 @@ import client.handlers.ClientThread;
 import client.models.Paquet;
 import client.models.User;
 import client.utility.Command;
-
+/**
+ * @author Josue Lubaki & Ismael Coulibaly
+ * @version 1.0
+ */
 import static client.utility.utils.capitalize;
 
 /**
@@ -50,212 +53,289 @@ public class clientFrame extends javax.swing.JFrame {
         }
 
         // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
+        private void initComponents() {
 
-        JDesktopPane jDesktopPane = new JDesktopPane();
-        tfUsername = new javax.swing.JTextField();
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        JLabel lblClient = new JLabel();
-        btnConnect = new javax.swing.JButton();
-        tfAddress = new javax.swing.JTextField();
-        btnDisconnect = new javax.swing.JButton();
-        tfPort = new javax.swing.JTextField();
-        btnClear = new javax.swing.JButton();
-        JScrollPane jScrollPaneMessage = new JScrollPane();
-        txtMessage = new javax.swing.JTextArea();
-        btnSend = new javax.swing.JButton();
-        JScrollPane jScrollPane = new JScrollPane();
-        txtChat = new javax.swing.JTextArea();
+                JDesktopPane jDesktopPane = new JDesktopPane();
+                tfUsername = new javax.swing.JTextField();
+                // Variables declaration - do not modify//GEN-BEGIN:variables
+                JLabel lblClient = new JLabel();
+                btnConnect = new javax.swing.JButton();
+                tfAddress = new javax.swing.JTextField();
+                btnDisconnect = new javax.swing.JButton();
+                tfPort = new javax.swing.JTextField();
+                btnClear = new javax.swing.JButton();
+                JScrollPane jScrollPaneMessage = new JScrollPane();
+                txtMessage = new javax.swing.JTextArea();
+                btnSend = new javax.swing.JButton();
+                JScrollPane jScrollPane = new JScrollPane();
+                txtChat = new javax.swing.JTextArea();
 
-        setTitle("YoChat");
-        // Ajout Image icon
-        setIconImage(new javax.swing.ImageIcon("src/resources/images/client.png").getImage());
+                setTitle("YoChat");
+                // Ajout Image icon
+                setIconImage(new javax.swing.ImageIcon("src/resources/images/client.png").getImage());
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jDesktopPane.setBackground(new java.awt.Color(101, 132, 148));
+                jDesktopPane.setBackground(new java.awt.Color(101, 132, 148));
 
-        tfUsername.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
-        tfUsername.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        tfUsername.setText("Username");
-        tfUsername.setToolTipText("Enter your username");
-        tfUsername.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfUsernameFocusGained();
-            }
+                tfUsername.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
+                tfUsername.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                tfUsername.setText("Username");
+                tfUsername.setToolTipText("Enter your username");
+                tfUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                                tfUsernameFocusGained();
+                        }
 
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfUsernameFocusLost();
-            }
-        });
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                tfUsernameFocusLost();
+                        }
+                });
 
-        lblClient.setFont(new java.awt.Font("Dialog", Font.BOLD, 18)); // NOI18N
-        lblClient.setForeground(new java.awt.Color(255, 255, 255));
-        lblClient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblClient.setText("CLIENT");
-        lblClient.setToolTipText("");
-        lblClient.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblClient.setInheritsPopupMenu(false);
+                lblClient.setFont(new java.awt.Font("Dialog", Font.BOLD, 18)); // NOI18N
+                lblClient.setForeground(new java.awt.Color(255, 255, 255));
+                lblClient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lblClient.setText("CLIENT");
+                lblClient.setToolTipText("");
+                lblClient.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+                lblClient.setInheritsPopupMenu(false);
 
-        btnConnect.setBackground(new java.awt.Color(0, 102, 51));
-        btnConnect.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
-        btnConnect.setText("Connect");
-        btnConnect.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnConnect.addActionListener(this::btnConnectActionPerformed);
+                btnConnect.setBackground(new java.awt.Color(0, 102, 51));
+                btnConnect.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
+                btnConnect.setText("Connect");
+                btnConnect.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+                btnConnect.addActionListener(this::btnConnectActionPerformed);
 
-        tfAddress.setFont(new java.awt.Font("Tahoma", Font.BOLD, 11)); // NOI18N
-        tfAddress.setText("localhost");
-        tfAddress.setToolTipText("Entrer localhost ou IP Addresse");
-        tfAddress.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfAddressFocusGained();
-            }
+                tfAddress.setFont(new java.awt.Font("Tahoma", Font.BOLD, 11)); // NOI18N
+                tfAddress.setText("localhost");
+                tfAddress.setToolTipText("Entrer localhost ou IP Addresse");
+                tfAddress.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                                tfAddressFocusGained();
+                        }
 
-            public void focusLost(java.awt.event.FocusEvent evt){
-                tfAddressFocusLost();
-            }
-        });
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                tfAddressFocusLost();
+                        }
+                });
 
-        btnDisconnect.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
-        btnDisconnect.setText("Disconnect");
-        btnDisconnect.setEnabled(false);
-        btnDisconnect.addActionListener(this::btnDisconnectActionPerformed);
+                btnDisconnect.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
+                btnDisconnect.setText("Disconnect");
+                btnDisconnect.setEnabled(false);
+                btnDisconnect.addActionListener(this::btnDisconnectActionPerformed);
 
-        tfPort.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
-        tfPort.setText("5000");
-        tfPort.setEditable(true);
-        tfPort.addFocusListener(new FocusAdapter() {
-            public void focusGained(FocusEvent evt) {
-                tfPortFocusGained();
-            }
+                tfPort.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
+                tfPort.setText("5000");
+                tfPort.setEditable(true);
+                tfPort.addFocusListener(new FocusAdapter() {
+                        public void focusGained(FocusEvent evt) {
+                                tfPortFocusGained();
+                        }
 
-            public void focusLost(java.awt.event.FocusEvent evt){
-                tfPortFocusLost();
-            }
-        });
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                tfPortFocusLost();
+                        }
+                });
 
-        btnClear.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
-        btnClear.setText("Clear");
-        btnClear.addActionListener(this::btnClearActionPerformed);
+                btnClear.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
+                btnClear.setText("Clear");
+                btnClear.addActionListener(this::btnClearActionPerformed);
 
-        jDesktopPane.setLayer(tfUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane.setLayer(lblClient, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane.setLayer(btnConnect, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane.setLayer(tfAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane.setLayer(btnDisconnect, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane.setLayer(tfPort, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane.setLayer(btnClear, javax.swing.JLayeredPane.DEFAULT_LAYER);
+                jDesktopPane.setLayer(tfUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
+                jDesktopPane.setLayer(lblClient, javax.swing.JLayeredPane.DEFAULT_LAYER);
+                jDesktopPane.setLayer(btnConnect, javax.swing.JLayeredPane.DEFAULT_LAYER);
+                jDesktopPane.setLayer(tfAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
+                jDesktopPane.setLayer(btnDisconnect, javax.swing.JLayeredPane.DEFAULT_LAYER);
+                jDesktopPane.setLayer(tfPort, javax.swing.JLayeredPane.DEFAULT_LAYER);
+                jDesktopPane.setLayer(btnClear, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane8Layout = new javax.swing.GroupLayout(jDesktopPane);
-        jDesktopPane.setLayout(jDesktopPane8Layout);
-        jDesktopPane8Layout.setHorizontalGroup(
-            jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jDesktopPane8Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfUsername)
-                            .addComponent(tfAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(tfPort, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDisconnect, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane8Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblClient, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(206, 206, 206))
-        );
-        jDesktopPane8Layout.setVerticalGroup(
-            jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane8Layout.createSequentialGroup()
-                .addComponent(lblClient, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jDesktopPane8Layout.createSequentialGroup()
-                        .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))
-                    .addGroup(jDesktopPane8Layout.createSequentialGroup()
-                        .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnDisconnect, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfAddress)
-                            .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfPort))))
-                .addContainerGap())
-        );
+                javax.swing.GroupLayout jDesktopPane8Layout = new javax.swing.GroupLayout(jDesktopPane);
+                jDesktopPane.setLayout(jDesktopPane8Layout);
+                jDesktopPane8Layout.setHorizontalGroup(
+                                jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jDesktopPane8Layout.createSequentialGroup()
+                                                                .addContainerGap()
+                                                                .addGroup(jDesktopPane8Layout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                .addGroup(jDesktopPane8Layout
+                                                                                                .createSequentialGroup()
+                                                                                                .addGroup(jDesktopPane8Layout
+                                                                                                                .createParallelGroup(
+                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING,
+                                                                                                                                false)
+                                                                                                                .addComponent(tfUsername)
+                                                                                                                .addComponent(tfAddress,
+                                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                                                152,
+                                                                                                                                Short.MAX_VALUE))
+                                                                                                .addGap(18, 18, 18)
+                                                                                                .addComponent(tfPort,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                70,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                .addPreferredGap(
+                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                                                                                77,
+                                                                                                                Short.MAX_VALUE)
+                                                                                                .addComponent(btnClear,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                77,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                .addGap(18, 18, 18)
+                                                                                                .addComponent(btnDisconnect,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                112,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                .addGroup(jDesktopPane8Layout
+                                                                                                .createSequentialGroup()
+                                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                                .addComponent(btnConnect,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                112,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addContainerGap())
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                jDesktopPane8Layout.createSequentialGroup()
+                                                                                .addContainerGap(
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                Short.MAX_VALUE)
+                                                                                .addComponent(lblClient,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                103,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(206, 206, 206)));
+                jDesktopPane8Layout.setVerticalGroup(
+                                jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jDesktopPane8Layout.createSequentialGroup()
+                                                                .addComponent(lblClient,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                44,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(
+                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                Short.MAX_VALUE)
+                                                                .addGroup(jDesktopPane8Layout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                .addGroup(jDesktopPane8Layout
+                                                                                                .createSequentialGroup()
+                                                                                                .addComponent(btnConnect,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                33,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                .addGap(40, 40, 40))
+                                                                                .addGroup(jDesktopPane8Layout
+                                                                                                .createSequentialGroup()
+                                                                                                .addComponent(tfUsername,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                32,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                .addPreferredGap(
+                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                                .addGroup(jDesktopPane8Layout
+                                                                                                                .createParallelGroup(
+                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING,
+                                                                                                                                false)
+                                                                                                                .addComponent(btnDisconnect,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                                29,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                .addComponent(tfAddress)
+                                                                                                                .addComponent(btnClear,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                                31,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                .addComponent(tfPort))))
+                                                                .addContainerGap()));
 
-        txtMessage.setColumns(20);
-        txtMessage.setRows(5);
-        txtMessage.setEnabled(false);
-        txtMessage.setText(txtMessageDescription);
-        jScrollPaneMessage.setViewportView(txtMessage);
-        jScrollPaneMessage.getViewport().getView().addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                txtMessageFocusGained();
-            }
+                txtMessage.setColumns(20);
+                txtMessage.setRows(5);
+                txtMessage.setEnabled(false);
+                txtMessage.setText(txtMessageDescription);
+                jScrollPaneMessage.setViewportView(txtMessage);
+                jScrollPaneMessage.getViewport().getView().addFocusListener(new FocusAdapter() {
+                        @Override
+                        public void focusGained(FocusEvent e) {
+                                txtMessageFocusGained();
+                        }
 
-            @Override
-            public void focusLost(FocusEvent e) {
-                txtMessageFocusLost();
-            }
-        });
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                                txtMessageFocusLost();
+                        }
+                });
 
+                btnSend.setBackground(new java.awt.Color(0, 102, 51));
+                btnSend.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
+                btnSend.setText("Send");
+                btnSend.setEnabled(false);
+                btnSend.addActionListener(this::btnSendActionPerformed);
 
-        btnSend.setBackground(new java.awt.Color(0, 102, 51));
-        btnSend.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
-        btnSend.setText("Send");
-        btnSend.setEnabled(false);
-        btnSend.addActionListener(this::btnSendActionPerformed);
+                txtChat.setEditable(false);
+                txtChat.setBackground(new java.awt.Color(102, 102, 102));
+                txtChat.setColumns(20);
+                txtChat.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
+                txtChat.setForeground(new java.awt.Color(255, 255, 255));
+                txtChat.setRows(5);
+                txtChat.setMargin(new java.awt.Insets(5, 5, 5, 5));
+                jScrollPane.setViewportView(txtChat);
 
-        txtChat.setEditable(false);
-        txtChat.setBackground(new java.awt.Color(102, 102, 102));
-        txtChat.setColumns(20);
-        txtChat.setFont(new java.awt.Font("Dialog", Font.BOLD, 12)); // NOI18N
-        txtChat.setForeground(new java.awt.Color(255, 255, 255));
-        txtChat.setRows(5);
-        txtChat.setMargin(new java.awt.Insets(5, 5, 5, 5));
-        jScrollPane.setViewportView(txtChat);
+                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                getContentPane().setLayout(layout);
+                layout.setHorizontalGroup(
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jDesktopPane)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
+                                                                .createSequentialGroup()
+                                                                .addContainerGap()
+                                                                .addGroup(layout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                .addComponent(jScrollPane)
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                                .addComponent(jScrollPaneMessage)
+                                                                                                .addPreferredGap(
+                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                                .addComponent(btnSend,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                65,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addContainerGap()));
+                layout.setVerticalGroup(
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
+                                                                .createSequentialGroup()
+                                                                .addComponent(jDesktopPane,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(
+                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jScrollPane,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                323,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(
+                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                Short.MAX_VALUE)
+                                                                .addGroup(layout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(btnSend,
+                                                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                48,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(jScrollPaneMessage,
+                                                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addContainerGap()));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPaneMessage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jDesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSend, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+                pack();
+        }// </editor-fold>//GEN-END:initComponents
 
         /**
          * Methode qui permet de supprimer le message dans le textarea
@@ -497,14 +577,14 @@ public class clientFrame extends javax.swing.JFrame {
                 txtMessage.setEnabled(false);
         }
 
-    public static javax.swing.JButton btnClear;
-    public static javax.swing.JButton btnConnect;
-    public static javax.swing.JButton btnDisconnect;
-    public static javax.swing.JButton btnSend;
-    public static javax.swing.JTextField tfAddress;
-    public static javax.swing.JTextField tfPort;
-    public static javax.swing.JTextField tfUsername;
-    public static javax.swing.JTextArea txtChat;
-    public static javax.swing.JTextArea txtMessage;
-    // End of variables declaration//GEN-END:variables
+        public static javax.swing.JButton btnClear;
+        public static javax.swing.JButton btnConnect;
+        public static javax.swing.JButton btnDisconnect;
+        public static javax.swing.JButton btnSend;
+        public static javax.swing.JTextField tfAddress;
+        public static javax.swing.JTextField tfPort;
+        public static javax.swing.JTextField tfUsername;
+        public static javax.swing.JTextArea txtChat;
+        public static javax.swing.JTextArea txtMessage;
+        // End of variables declaration//GEN-END:variables
 }

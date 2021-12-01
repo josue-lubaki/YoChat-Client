@@ -4,6 +4,10 @@ import client.ui.clientFrame;
 
 import javax.swing.*;
 
+/**
+ * @author Josue Lubaki & Ismael Coulibaly
+ * @version 1.0
+ */
 public class Client {
     /**
      * @param args the command line arguments
@@ -16,7 +20,8 @@ public class Client {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | UnsupportedLookAndFeelException | IllegalAccessException | InstantiationException ex) {
+        } catch (ClassNotFoundException | UnsupportedLookAndFeelException | IllegalAccessException
+                | InstantiationException ex) {
             java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
