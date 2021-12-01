@@ -47,46 +47,40 @@ public class ClientThread implements Runnable {
                         command = paquet.getCommand();
 
                 switch (command) {
-                    case Command.CONNECT:
+                    case Command.CONNECT -> {
                         txtChat.setText("");
                         myUsername = capitalize(message.split(" ")[0]);
                         updateDashBoard("SERVEUR", "Tu es à présent connecter.");
                         updateComponentContextConnect();
                         JOptionPane.showMessageDialog(null, "Bienvenue " + myUsername, "SUCCESS",
                                 JOptionPane.INFORMATION_MESSAGE);
-                        break;
-
-                    case Command.DISCONNECT:
+                    }
+                    case Command.DISCONNECT -> {
                         updateDashBoard("SERVEUR", "Tu es à présent déconnecter.");
                         updateComponentContextDisconnect();
-                        break;
-
-                    case Command.CHAT:
+                    }
+                    case Command.CHAT -> {
                         username = username.equals(myUsername) ? "Moi" : username;
                         updateDashBoard(username, message);
-                        break;
-
-                    case Command.SERVER_ERROR:
+                    }
+                    case Command.SERVER_ERROR -> {
                         updateDashBoard(username, message);
                         isConnected = false;
                         updateComponentContextDisconnect();
                         return;
-
-                    case Command.LIST:
+                    }
+                    case Command.LIST -> {
                         // split the list of users
                         String[] partMessage = message.split(":");
                         // split partMessage
                         String[] users = partMessage[1].trim().split(" ");
-
                         txtChat.append(username + " : " + partMessage[0] + "\n");
                         for (String user : users) {
                             txtChat.append("     " + user + "\n");
                         }
-
-                        break;
-
-                    default:
-                        break;
+                    }
+                    default -> {
+                    }
                 }
             }
         } catch (Exception e) {
